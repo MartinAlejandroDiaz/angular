@@ -1,0 +1,12 @@
+<ng-container *ngIf="isVisible$ | async">
+    <button *ngIf="permission$ | async as permission" 
+        mat-mini-fab color="primary" 
+        class="subscribe-button" 
+        aria-label="subscribe button with a notifications icon" 
+        (click)="onSubscribe()" 
+        [disabled]="permission === 'denied'">
+      <mat-icon *ngIf="permission === 'default'">notifications</mat-icon>
+      <mat-icon *ngIf="permission === 'granted'">notifications_active</mat-icon>
+      <mat-icon *ngIf="permission === 'denied'">notifications_off</mat-icon>
+    </button>
+</ng-container>

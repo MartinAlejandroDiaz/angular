@@ -1,0 +1,99 @@
+<h4>Formularios <small>data</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+
+  <div formGroupName="nombrecompleto">
+    <!-- [ngClass]="{'has-danger text-danger': !forma.get('nombre').valid}" -->
+    <div class="form-group row" [ngClass]="{'has-danger text-danger': !forma.get('nombrecompleto').controls['nombre'].valid}">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+        <div  *ngIf="!forma.get('nombrecompleto.nombre').errors?.required"
+              class="form-control-feedback">
+              El nombre es necesario.
+        </div>
+        <div  *ngIf="!forma.get('nombrecompleto.nombre').errors?.minlenght"
+                class="form-control-feedback">
+                Por lo menos 3 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+                type="text"
+                placeholder="Apellido"
+                formControlName="apellido">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             email
+             placeholder="Correo electrónico"
+             formControlName="email">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pasatiempos</label>
+    <div class="col-md-8" formArrayName="pasatiempos">
+      <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls; let i = index"
+             type="text"
+             class="form-control"
+             [formControlName]="i">  
+    </div>
+    <button (click)="agregarPasatiempo()"
+            type="button"
+            class="btn btn-primary">
+      Nuevo
+    </button>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-8">
+    <input  type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password1">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-8">
+    <input  type="password"
+            class="form-control"
+            placeholder="Repetir contraseña"
+            formControlName="password2">
+    </div>
+  </div>
+
+      
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+  {{ forma.valid }}
+
+
+</form>
