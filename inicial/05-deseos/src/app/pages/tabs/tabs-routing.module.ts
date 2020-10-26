@@ -9,14 +9,13 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        component: TabsPage,
         children: [
           {
             path: '',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
           },
           {
-            path: 'agregar',
+            path: 'agregar/:listaId',
             loadChildren: '../agregar/agregar.module#AgregarPageModule'
           }
         ]
@@ -27,6 +26,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
+          },
+          {
+            path: 'agregar/:listaId',
+            loadChildren: '../agregar/agregar.module#AgregarPageModule'
           }
         ]
       },
