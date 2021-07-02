@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   url: 'http://localhost:5000/firestore-grafica-41bd3/us-central1',
   firebase: {
-    apiKey: "AIzaSyBBas4bAXoHcgqAWGXVq81yAsPbNhFKd2s",
-    authDomain: "firestore-grafica-41bd3.firebaseapp.com",
-    databaseURL: "https://firestore-grafica-41bd3.firebaseio.com",
-    projectId: "firestore-grafica-41bd3",
-    storageBucket: "firestore-grafica-41bd3.appspot.com",
-    messagingSenderId: "638892181922",
-    appId: "1:638892181922:web:5acd2bc26d6880fc100afb"
+    apiKey: 'AIzaSyDUd4RRz__2YB7UaS9Jf4v_TMXtnFgvedg',
+    authDomain: 'curso-93892.firebaseapp.com',
+    projectId: 'curso-93892',
+    storageBucket: 'curso-93892.appspot.com',
+    messagingSenderId: '100789550456',
+    appId: '1:100789550456:web:815b3e8a793b80f74bdc8d',
+    measurementId: 'G-WW5H0PBNZ2'
   }
 };
 
