@@ -1,6 +1,7 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-//Components
+import { AuthGuard } from '../guards/auth.guard';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -10,20 +11,27 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 
-const pagesRoutes: Routes = [
-  { 
-    path: '',
-    component: PagesComponent,
-    children: [
-        { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-        { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }  },
-        { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }  },
-        { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }  },
-        { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }  },
-        { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' }  },
-        { path: '**', redirectTo: '/dashboard', pathMatch: 'full'}
-    ]
-  }
+
+const routes: Routes = [
+    { 
+        path: 'dashboard', 
+        component: PagesComponent,
+       canActivate: [ AuthGuard ],
+        children: [
+            { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+            { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' }},
+            { path: 'grafica1', component: Graficas1Component, data: { titulo: 'Gráfica #1' }},
+            { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de cuenta' }},
+            { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},
+            { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
+        ]
+    },
 ];
 
-export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
+@NgModule({
+    imports: [ RouterModule.forChild(routes) ],
+    exports: [ RouterModule ]
+})
+export class PagesRoutingModule {}
+
+

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 //Routes
-import { PAGES_ROUTES } from './pages.routes';
+import { PagesRoutingModule } from './pages.routes';
 
 //Modulos
 import { SharedModule } from '../shared/shared.module';
@@ -18,7 +18,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
 
 @NgModule({
     declarations: [
@@ -31,7 +31,6 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        NopagefoundComponent
     ],
     exports: [
         DashboardComponent,
@@ -40,7 +39,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     ],
     imports: [
         SharedModule,
-        PAGES_ROUTES,
+        PagesRoutingModule,
         FormsModule,
         ChartsModule
     ]
