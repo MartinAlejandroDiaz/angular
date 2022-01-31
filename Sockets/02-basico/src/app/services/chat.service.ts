@@ -10,15 +10,19 @@ export class ChatService {
     public wsService: WebsocketService
   ) { }
 
-  sendMessage( mensaje: string ) {
-    const payload = {
-      de: 'Tino',
-      cuerpo: mensaje
-    };
-    this.wsService.emit('mensaje', payload );
-  }
+    sendMessage( mensaje: string ) {
 
-  getMessages() {
-    return this.wsService.listen('mensaje-nuevo');
-  }
+      const payload = {
+        de: 'Fernando',
+        cuerpo: mensaje
+      };
+
+      this.wsService.emit('mensaje', payload );
+
+    }
+
+    getMessages() {
+      return this.wsService.listen('mensaje-nuevo');
+    }
+
 }
