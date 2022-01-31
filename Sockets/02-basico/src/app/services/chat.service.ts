@@ -9,11 +9,16 @@ export class ChatService {
   constructor(
     public wsService: WebsocketService
   ) { }
-  sendMessage(mensaje) {
+
+  sendMessage( mensaje: string ) {
     const payload = {
       de: 'Tino',
       cuerpo: mensaje
     };
-    this.wsService.emit('mensaje', payload);
+    this.wsService.emit('mensaje', payload );
+  }
+
+  getMessages() {
+    return this.wsService.listen('mensaje-nuevo');
   }
 }
